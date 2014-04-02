@@ -15,13 +15,13 @@ var tablePath = process.argv[2] || "./Tables";
 
 var time = process.hrtime();
 console.log(JSON.stringify({
-	BrailleLanguage: fs.readdirSync(tablePath).filter(function(filename) {
+	braillelanguages: fs.readdirSync(tablePath).filter(function(filename) {
 		return path.extname(filename) == ".ttb";
 	}).map(function(filename) {
 		console.error("Producing " + filename + "...");
 		return {
-			"Language": path.basename(filename, ".ttb"),
-			"BrailleCharacter": parseFile(filename)
+			"language": path.basename(filename, ".ttb"),
+			"charset": parseFile(filename)
 		};
 })}, null, "  "));
 var diff = process.hrtime(time);
@@ -121,13 +121,13 @@ function parseLine(line, filename, lineNumber) {
 			parsedCharacter = character[0];
 		}
 
-		parsedDots[0] = Number(dots.indexOf("1") != -1);
-		parsedDots[1] = Number(dots.indexOf("2") != -1);
-		parsedDots[2] = Number(dots.indexOf("3") != -1);
-		parsedDots[3] = Number(dots.indexOf("4") != -1);
-		parsedDots[4] = Number(dots.indexOf("5") != -1);
-		parsedDots[5] = Number(dots.indexOf("6") != -1);
-		parsedDots[6] = Number(dots.indexOf("7") != -1);
+		parsedDots[0] = Number(dots.indexOf("7") != -1);
+		parsedDots[1] = Number(dots.indexOf("3") != -1);
+		parsedDots[2] = Number(dots.indexOf("2") != -1);
+		parsedDots[3] = Number(dots.indexOf("1") != -1);
+		parsedDots[4] = Number(dots.indexOf("4") != -1);
+		parsedDots[5] = Number(dots.indexOf("5") != -1);
+		parsedDots[6] = Number(dots.indexOf("6") != -1);
 		parsedDots[7] = Number(dots.indexOf("8") != -1);
 
 
